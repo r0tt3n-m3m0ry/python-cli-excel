@@ -1,10 +1,20 @@
 #!usr/bin/python3
 
-from prettytable import PrettyTable
+try:
+    from prettytable import PrettyTable
+except ImportError:
+    print('Install requirement modules via \'$ pip3 install -r requirements.txt\''); break
+
 import os
 
 def cls():
     os.system('cls') if os.name == 'nt' else os.system('clear')
+
+def saving_table():
+    pass
+
+def opening_table():
+    pass
 
 table = PrettyTable()
 
@@ -35,7 +45,9 @@ while True:
     print(table)
     
     choice = input('\nEnter \'end\' or \'e\' for saving table and exit\n\nEnter \'next\' or \'n\' for adding next row\n\nChoice: ')
-
+    if choice == '':
+        print('\nNo, you must enter something!\n')
+        break
     if choice[0] == 'e':
         cls()
         print(table)
@@ -51,3 +63,6 @@ while True:
         break
     elif choice[0] == 'n':
         continue
+    else:
+        print('\nFuck you, stupid user!\n')
+        break
