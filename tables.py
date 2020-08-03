@@ -3,7 +3,7 @@
 try:
     from prettytable import PrettyTable
 except ImportError:
-    print('Install requirement modules via \'$ pip3 install -r requirements.txt\''); break
+    print('Install requirement modules via \'$ pip3 install -r requirements.txt\''); exit()
 
 import os
 
@@ -52,6 +52,8 @@ while True:
         cls()
         print(table)
         filename = input('\nEnter name of file and extention, splitted by dot (for example, \'example.txt\', if not extention - default .txt): ')
+        if os.path.exists(filename) == True:
+            filename = filename + f'_{filename[-1]}'
         if len(filename.split('.')) != 1:
             table_file = open(filename, 'w')
             table_file.write(str(table) + '\n\n')
