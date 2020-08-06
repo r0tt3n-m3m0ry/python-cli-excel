@@ -33,7 +33,10 @@ while True:
 for field in range(count_of_fields):
     fields.append(input('\nEnter field title: '))
 
-table.field_names = fields
+try:
+    table.field_names = fields
+except:
+    print('\nAll column titles must be unique!\n'); exit()
 
 while True:
     for value in range(count_of_fields):
@@ -48,7 +51,7 @@ while True:
     if choice == '':
         print('\nNo, you must enter something!\n')
         break
-    if choice[0] == 'e':
+    if choice[0].lower() == 'e':
         cls()
         print(table)
         filename = input('\nEnter name of file and extention, splitted by dot (for example, \'example.txt\', if not extention - default .txt): ')
@@ -63,7 +66,7 @@ while True:
             table_file.write(str(table) + '\n\n')
             table_file.close()
         break
-    elif choice[0] == 'n':
+    elif choice[0].lower() == 'n':
         continue
     else:
         print('\nFuck you, stupid user!\n')
